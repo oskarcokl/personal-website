@@ -1,14 +1,11 @@
 import type { NextPage } from 'next'
+import Header from '../components/Header'
 import styles from '../styles/HomePage.module.css'
 
 const HomePage: NextPage = () => {
     return (
         <div>
-            <div className={styles.header}>
-                <h2 className={styles.headerTitle}>Projects</h2>
-                <h1 className={styles.headerTitle}>Oskar Čokl</h1>
-                <h2 className={styles.headerTitle}>Blog</h2>
-            </div>
+            <Header/>
             <div className={styles.content}>
                 <div className={styles.aboutMe}>
                     <h1>About Me</h1>
