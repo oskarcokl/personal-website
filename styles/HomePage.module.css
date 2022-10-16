@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 50px;
+    margin-top: 1em;
+}
+
+.headerTitle {
+    position: relative;
+    border-radius: 70%;
+    transition: box-shadow .75s ease-out;
+    background-color: var(--accent-color-1);
+    box-shadow: inset 0 0 0 40px var(--bg-color);
+    cursor: pointer;
+}
+
+.headerTitle:hover {
+    box-shadow: inset 0 0 0 1px var(--bg-color);
+}

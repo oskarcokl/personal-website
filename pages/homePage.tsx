@@ -4,10 +4,10 @@ import styles from '../styles/HomePage.module.css'
 const HomePage: NextPage = () => {
     return (
         <div>
-            <div className='header'>
-                <h2>Projects</h2>
-                <h1>Oskar Čokl</h1>
-                <h2>Blog</h2>
+            <div className={styles.header}>
+                <h2 className={styles.headerTitle}>Projects</h2>
+                <h1 className={styles.headerTitle}>Oskar Čokl</h1>
+                <h2 className={styles.headerTitle}>Blog</h2>
             </div>
             <div className='content'>
                 <div className='about-me'>
