@@ -6,7 +6,7 @@ import styles from '../styles/Projects.module.css'
 const Projects: NextPage = () => {
     return (
         <div>
-            <Header/>
+            <Header selected='projects'/>
             <div className={styles.container}>
                 <div className={styles.projectTeaser}>
                     <Image src={'/project-tmp.jpg'} alt='project image' width={300} height={250}/>
