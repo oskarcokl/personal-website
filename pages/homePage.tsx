@@ -5,7 +5,7 @@ import styles from '../styles/HomePage.module.css'
 const HomePage: NextPage = () => {
     return (
         <div>
-            <Header/>
+            <Header selected=''/>
             <div className={styles.content}>
                 <div className={styles.aboutMe}>
                     <h1>About Me</h1>
