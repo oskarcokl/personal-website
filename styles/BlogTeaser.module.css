@@ -1,0 +1,7 @@
+.blogTeaser h3 {
+    border-bottom: 2px solid var(--txt-color);
+}
+
+.blogTeaser {
+    margin-top: 70px;
+}
