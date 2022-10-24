@@ -5,11 +5,13 @@ import styles from '../styles/Project.module.css';
 
 const Project: NextPage = () => {
     return (
-        <section>
+        <section className={styles.container}>
             <div className={styles.projectTitle}>
-                <BackButton/>
-                <h1>Project title</h1>
-                <div>Date, author</div>
+                    <BackButton/>
+                    <div className={styles.titleAuthor}>
+                        <h1>Project title</h1>
+                        <p>Date, author</p>
+                    </div>
             </div>
 
         </section>

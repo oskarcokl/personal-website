@@ -1,9 +1,9 @@
 .backButton {
-    line-height: 100px;
-    font-size: 100px;
+    line-height: 70px;
+    font-size: 70px;
     background-color: var(--accent-color-1);
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     text-align: center;
 }
