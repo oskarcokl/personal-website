@@ -20,8 +20,9 @@ const Project: NextPage = () => {
             <div className={styles.content}>
                 <div className={styles.flexRow}>
                     <p className={styles.flexItem}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga iure cupiditate ab quasi minus distinctio! Vitae animi veniam qui nulla corporis recusandae explicabo optio libero, consequuntur quas dignissimos officiis cumque!
-                        Corporis rem voluptates natus, ut ad et sed ducimus nam repudiandae reprehenderit totam illo provident alias esse ab quidem soluta sit, consequatur quibusdam neque autem, voluptate assumenda odio! Totam, ducimus!
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente minima pariatur esse totam beatae debitis impedit aliquid voluptas perspiciatis autem. Iusto pariatur odio sit numquam sapiente eligendi fugiat, obcaecati dolorum.
+                        Odit id adipisci quibusdam doloremque dignissimos alias repudiandae hic possimus sit. Quos animi nemo soluta possimus, libero quisquam autem perferendis numquam dignissimos ab est dicta voluptatibus repudiandae esse aliquam adipisci!
+                        Deleniti voluptatem dolor sapiente nihil? Qui eius sit dolor. Debitis consequatur, ad laboriosam accusantium excepturi sequi accusamus sunt, fuga officiis porro maiores nam aperiam voluptates necessitatibus, et dignissimos. Modi, sit?
                     </p>
                     <div className={styles.projectImage + " " + styles.flexItem}>
                         <Image src={projectImage} alt='Project image'/>
@@ -29,8 +30,29 @@ const Project: NextPage = () => {
                 </div>
                 <div className={styles.flexRow + ' ' + styles.reverse}>
                     <p className={styles.flexItem}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga iure cupiditate ab quasi minus distinctio! Vitae animi veniam qui nulla corporis recusandae explicabo optio libero, consequuntur quas dignissimos officiis cumque!
-                        Corporis rem voluptates natus, ut ad et sed ducimus nam repudiandae reprehenderit totam illo provident alias esse ab quidem soluta sit, consequatur quibusdam neque autem, voluptate assumenda odio! Totam, ducimus!
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus omnis reiciendis adipisci. Tempore temporibus iusto consequatur molestiae, incidunt repellat, hic quod perferendis non consequuntur adipisci cum? Corporis similique consequuntur expedita.
+                        Natus, harum perferendis rem illo maxime adipisci tempora aperiam inventore voluptate dolores dolore porro iure eius consequatur repellat, quam cumque? Facere aperiam iure reprehenderit a! Necessitatibus nam tempora labore. Molestiae?
+                        Quisquam necessitatibus officiis enim dolorum, quos alias similique quo veritatis ipsam, molestias inventore sit iste suscipit reprehenderit asperiores corporis velit ad, eos vero hic totam? At ad atque libero quas.
+                    </p>
+                    <div className={styles.projectImage + " " + styles.flexItem}>
+                        <Image src={projectImage} alt='Project image'/>
+                    </div>
+                </div>
+                <div className={styles.flexRow}>
+                    <p className={styles.flexItem}>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente minima pariatur esse totam beatae debitis impedit aliquid voluptas perspiciatis autem. Iusto pariatur odio sit numquam sapiente eligendi fugiat, obcaecati dolorum.
+                        Odit id adipisci quibusdam doloremque dignissimos alias repudiandae hic possimus sit. Quos animi nemo soluta possimus, libero quisquam autem perferendis numquam dignissimos ab est dicta voluptatibus repudiandae esse aliquam adipisci!
+                        Deleniti voluptatem dolor sapiente nihil? Qui eius sit dolor. Debitis consequatur, ad laboriosam accusantium excepturi sequi accusamus sunt, fuga officiis porro maiores nam aperiam voluptates necessitatibus, et dignissimos. Modi, sit?
+                    </p>
+                    <div className={styles.projectImage + " " + styles.flexItem}>
+                        <Image src={projectImage} alt='Project image'/>
+                    </div>
+                </div>
+                <div className={styles.flexRow + ' ' + styles.reverse}>
+                    <p className={styles.flexItem}>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus omnis reiciendis adipisci. Tempore temporibus iusto consequatur molestiae, incidunt repellat, hic quod perferendis non consequuntur adipisci cum? Corporis similique consequuntur expedita.
+                        Natus, harum perferendis rem illo maxime adipisci tempora aperiam inventore voluptate dolores dolore porro iure eius consequatur repellat, quam cumque? Facere aperiam iure reprehenderit a! Necessitatibus nam tempora labore. Molestiae?
+                        Quisquam necessitatibus officiis enim dolorum, quos alias similique quo veritatis ipsam, molestias inventore sit iste suscipit reprehenderit asperiores corporis velit ad, eos vero hic totam? At ad atque libero quas.
                     </p>
                     <div className={styles.projectImage + " " + styles.flexItem}>
                         <Image src={projectImage} alt='Project image'/>
