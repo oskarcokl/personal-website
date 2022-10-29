@@ -1,9 +1,14 @@
 import styles from '../styles/BackButton.module.css'
+import Link from 'next/link'
 
-const BackButton = () => {
+interface IProps {
+    url: string
+}
+
+const BackButton = ({url}: IProps) => {
     return (
         <div className={styles.backButton}>
- 	        <a href="">&larr;</a>
+ 	        <Link href={url}>&larr;</Link>
         </div>
     )
 }

@@ -5,3 +5,7 @@
 .blogTeaser {
     margin-top: 70px;
 }
+
+.blogTitle {
+    cursor: pointer;
+}

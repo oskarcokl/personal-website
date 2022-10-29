@@ -1,4 +1,5 @@
-import { FunctionComponent } from "react"
+import Link from 'next/link';
+
 import styles from '../styles/Header.module.css'
 
 const Header = ({selected}: {selected: string}) => {
@@ -16,9 +17,9 @@ const Header = ({selected}: {selected: string}) => {
 
     return (
         <div className={styles.header}>
-            <h2 className={projectsClasses}>Projects</h2>
-            <h1 className={styles.headerTitle}>Oskar Čokl</h1>
-            <h2 className={blogClasses}>Blog</h2>
+            <Link href='/projects'><h2 className={projectsClasses}>Projects</h2></Link>
+            <Link href='/'><h1 className={styles.headerTitle}>Oskar Čokl</h1></Link>
+            <Link href='/blog'><h2 className={blogClasses}>Blog</h2></Link>
         </div>
     )
 }

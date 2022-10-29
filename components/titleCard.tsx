@@ -5,12 +5,13 @@ interface IProps {
     title: string,
     author: string,
     date: Date
+    url: string
 }
 
-const TitleCard = ({title, author, date}: IProps) => {
+const TitleCard = ({title, author, date, url}: IProps) => {
     return (
         <div className={styles.projectTitle}>
-            <BackButton/>
+            <BackButton url={url}/>
             <div className={styles.titleAuthor}>
                 <h1>{title || 'Title'}</h1>
                 <p>{author || 'author'}, {date?.toDateString() || 'date'}</p>

@@ -9,7 +9,7 @@ import projectImage from '../../public/project-tmp.jpg';
 const Project: NextPage = () => {
     return (
         <section className={styles.container}>
-            <TitleCard author="Oskar Čokl" title="Awesome Project" date={new Date(2022, 9, 11)}/>
+            <TitleCard author="Oskar Čokl" title="Awesome Project" date={new Date(2022, 9, 11)} url='/projects'/>
 
             <div className={styles.content}>
                 <div className={styles.flexRow}>
