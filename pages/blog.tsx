@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import BlogTeaser from '../components/BlogTeaser'
 import styles from '../styles/Blog.module.css'
 
-const HomePage: NextPage = () => {
+const Blog: NextPage = () => {
     return (
         <div>
             <Header selected='blog'/>
@@ -18,4 +18,4 @@ const HomePage: NextPage = () => {
     )
 }
 
-export default HomePage
+export default Blog
