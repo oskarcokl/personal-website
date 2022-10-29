@@ -1,6 +1,6 @@
 import { NextPage } from "next";
-import BackButton from "../components/BackButton";
 import Image from "next/image";
+import TitleCard from "../components/titleCard";
 import styles from '../styles/Project.module.css';
 
 import projectImage from '../public/project-tmp.jpg';
@@ -9,13 +9,7 @@ import projectImage from '../public/project-tmp.jpg';
 const Project: NextPage = () => {
     return (
         <section className={styles.container}>
-            <div className={styles.projectTitle}>
-                    <BackButton/>
-                    <div className={styles.titleAuthor}>
-                        <h1>Project title</h1>
-                        <p>Date, author</p>
-                    </div>
-            </div>
+            <TitleCard />
 
             <div className={styles.content}>
                 <div className={styles.flexRow}>

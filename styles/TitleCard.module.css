@@ -1,0 +1,19 @@
+.projectTitle {
+    display: flex;
+    direction: row;
+
+}
+
+.titleAuthor h1{
+    font-size: 50px;
+    display: block;
+    margin: 0;
+}
+
+.titleAuthor p {
+    margin: 0;
+}
+
+.titleAuthor {
+    margin-left: 20px;
+}
