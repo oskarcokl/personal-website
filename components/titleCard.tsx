@@ -1,13 +1,19 @@
 import BackButton from "./BackButton";
 import styles from '../styles/TitleCard.module.css';
 
-const TitleCard = () => {
+interface IProps {
+    title: string,
+    author: string,
+    date: Date
+}
+
+const TitleCard = ({title, author, date}: IProps) => {
     return (
         <div className={styles.projectTitle}>
             <BackButton/>
             <div className={styles.titleAuthor}>
-                <h1>Project title</h1>
-                <p>Date, author</p>
+                <h1>{title || 'Title'}</h1>
+                <p>{author || 'author'}, {date?.toDateString() || 'date'}</p>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ import projectImage from '../public/project-tmp.jpg';
 const BlogPost: NextPage = () => {
     return (
         <section className={styles.container}>
-            <TitleCard />
+            <TitleCard author='Oskar Čokl' title='First blog post' date={new Date('2022, 10, 29')}/>
 
             <section className={styles.content}>
                 <p>
