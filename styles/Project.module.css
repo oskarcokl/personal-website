@@ -1,7 +1,6 @@
 .container {
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 50px
+    margin: 0 5px;
+    margin-top: 50px;
 }
 
 .projectTitle {
@@ -22,4 +21,42 @@
 
 .titleAuthor {
     margin-left: 20px;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+.content p {
+    margin: 0;
+}
+
+.flexItem   {
+    width: 100%;
+}
+
+.flexRow {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+@media (min-width: 700px) {
+    .container {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 50px
+    }
+
+    .flexItem {
+        width: 49%;
+    }
 }
