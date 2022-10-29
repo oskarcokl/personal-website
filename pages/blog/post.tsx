@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
-import TitleCard from '../components/titleCard';
+import TitleCard from '../../components/titleCard';
 import Image from 'next/image';
 
-import styles from '../styles/BlogPost.module.css';
-import projectImage from '../public/project-tmp.jpg';
+import styles from '../../styles/BlogPost.module.css';
+import projectImage from '../../public/project-tmp.jpg';
 
 const BlogPost: NextPage = () => {
     return (

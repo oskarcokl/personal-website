@@ -1,15 +1,15 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import TitleCard from "../components/titleCard";
-import styles from '../styles/Project.module.css';
+import TitleCard from "../../components/titleCard";
+import styles from '../../styles/Project.module.css';
 
-import projectImage from '../public/project-tmp.jpg';
+import projectImage from '../../public/project-tmp.jpg';
 
 
 const Project: NextPage = () => {
     return (
         <section className={styles.container}>
-            <TitleCard />
+            <TitleCard author="Oskar Čokl" title="Awesome Project" date={new Date(2022, 9, 11)}/>
 
             <div className={styles.content}>
                 <div className={styles.flexRow}>

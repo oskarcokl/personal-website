@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import Image from "next/image";
-import Header from "../components/Header";
-import styles from '../styles/Projects.module.css'
+import Header from "../../components/Header";
+import styles from '../../styles/Projects.module.css'
 
 const Projects: NextPage = () => {
     return (
