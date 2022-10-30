@@ -9,7 +9,6 @@ const BlogPost: NextPage = () => {
     return (
         <section className={styles.container}>
             <TitleCard author='Oskar Čokl' title='First blog post' date={new Date('2022, 10, 29')} url='/blog'/>
-
             <section className={styles.content}>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates vitae modi quisquam alias perspiciatis distinctio. Maxime minus a consequatur animi neque, rerum dolorum alias architecto error, nihil distinctio placeat expedita.
