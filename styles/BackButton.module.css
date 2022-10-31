@@ -1,10 +1,19 @@
 .backButton {
-    line-height: 70px;
-    font-size: 70px;
+    line-height: var(--big-screen-size);
+    font-size: var(--big-screen-size);
     background-color: var(--accent-color-1);
     display: block;
-    width: 70px;
-    height: 70px;
+    width: var(--big-screen-size);
+    height: var(--big-screen-size);
     text-align: center;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .backButton {
+        line-height: var(--small-screen-size);
+        font-size: var(--small-screen-size);
+        width: var(--small-screen-size);
+        height: var(--small-screen-size);
+    }
 }

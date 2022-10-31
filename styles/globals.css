@@ -11,6 +11,8 @@ body {
   --txt-color: #2F2D2E;
   --accent-color-1: #D7FFC1;
   --accent-color-2: #7067CF;
+  --big-screen-size: 70px;
+  --small-screen-size: 50px;
   background-color: var(--bg-color);
   color: var(--txt-color);
 }
