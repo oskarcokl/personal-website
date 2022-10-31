@@ -28,14 +28,7 @@
 
 .links {
     margin-top: 10px;
-}
-
-.displayBlock {
-    display: block;
-}
-
-.displayNone {
-    display: none;
+    transition: transform 1s display 1s;
 }
 
 .links a {
@@ -57,5 +50,15 @@
 
 .burger {
     padding-top: 20px;
+    overflow: hidden;
+    transition: height .5s;
     /* background-color: var(--accent-color-1); */
+}
+
+.burgerOpen {
+    height: 185px;
+}
+
+.burgerClosed {
+    height: 50px;
 }

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import styles from '../styles/Header.module.css'
 
@@ -23,12 +23,11 @@ class Header extends React.Component<IProps, IState> {
             matchmedia: false,
             menuShown: false,
             menuItems: null,
-            display: styles.displayNone
+            display: styles.burgerClosed
         }
     }
 
     componentDidMount() {
-        console.log('Mount');
         this.setState({
             matchmedia: matchMedia('(min-width: 600px)').matches
         })
@@ -49,12 +48,12 @@ class Header extends React.Component<IProps, IState> {
     toggleMenu() {
         if (this.state.menuShown) {
             this.setState({
-                display: styles.displayNone,
+                display: styles.burgerClosed,
                 menuShown: false
             })
         } else if (!this.state.menuShown) {
             this.setState({
-                display: styles.displayBlock,
+                display: styles.burgerOpen,
                 menuShown: true
             })
         }
@@ -83,9 +82,9 @@ class Header extends React.Component<IProps, IState> {
             )
         } else {
             return (
-                <div className={styles.burger}>
+                <div className={styles.burger + ' ' + this.state.display}>
                     <FontAwesomeIcon icon={faBars} className={styles.burgerIcon} id='burgerIcon' onClick={this.toggleMenu.bind(this)}/>
-                    <div className={styles.links + ' ' + this.state.display} id='menuItems'>
+                    <div className={styles.links} id='menuItems'>
                         <Link href='/'>Oskar Čokl</Link>
                         <Link href='/projects'>Projects</Link>
                         <Link href='/blog'>Blog</Link>
