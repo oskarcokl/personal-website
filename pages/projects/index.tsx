@@ -1,6 +1,4 @@
 import { NextPage } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import Header from "../../components/Header";
 import styles from '../../styles/Projects.module.css'
 import ProjectTeaser from "../../components/ProjectTeaser";
