@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Header from '../components/Header'
+import Contacts from '../components/Contacts'
 import styles from '../styles/HomePage.module.css'
 
 const HomePage: NextPage = () => {
@@ -22,6 +23,7 @@ const HomePage: NextPage = () => {
                         Quia quos doloremque aliquid quod dolorem perferendis, eveniet animi inventore, fugiat vitae exercitationem labore distinctio saepe, corrupti suscipit itaque. Voluptates modi dolores nobis alias minus. Amet ea harum voluptatum nulla?
                     </p>
                 </div>
+                <Contacts/>
             </div>
         </div>
     )

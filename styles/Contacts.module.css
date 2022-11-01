@@ -1,0 +1,13 @@
+.contacts {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.icon {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
