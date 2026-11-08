@@ -7,7 +7,7 @@ const LINKS = [
     { href: "/blog", label: "Blog", isActive: (pathname: string) => pathname === "/blog" },
     { href: "/gamedev", label: "Game Development", isActive: (pathname: string) => pathname.startsWith("/gamedev") },
     { href: "/now", label: "Now", isActive: (pathname: string) => pathname === "/now" },
-    { href: "/CV/en", label: "CV", isActive: (pathname: string) => pathname.startsWith("/CV") },
+    { href: "/CV", label: "CV", isActive: (pathname: string) => pathname.startsWith("/CV") },
 ]
 
 export default function Navigation() {

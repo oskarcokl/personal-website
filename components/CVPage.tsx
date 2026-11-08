@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -7,11 +6,12 @@ import WorkDescription from '@/components/WorkDescription';
 import SectionTitle from '@/components/SectionTitle';
 import DownloadCVButton from '@/components/DownloadCVButton';
 import JsonLd from '@/components/JsonLd';
+import CVLanguageLink from '@/components/CVLanguageLink';
 import { data as enData } from '@/public/locales/CV/en';
 import { AUTHOR, SITE_URL, absoluteUrl } from '@/lib/site';
+import { CVLang } from '@/lib/cvLanguage';
 
 export type CVData = typeof enData;
-export type CVLang = 'en' | 'sl';
 
 const LANGUAGES: { lang: CVLang; label: string }[] = [
   { lang: 'en', label: 'English' },
@@ -57,9 +57,9 @@ export default function CVPage({ lang, cvData }: { lang: CVLang; cvData: CVData 
               {language.label}
             </span>
           ) : (
-            <Link key={language.lang} href={`/CV/${language.lang}`} hrefLang={language.lang} lang={language.lang}>
+            <CVLanguageLink key={language.lang} lang={language.lang}>
               {language.label}
-            </Link>
+            </CVLanguageLink>
           )
         )}
       </nav>
