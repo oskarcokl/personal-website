@@ -1,17 +1,29 @@
+import type { Metadata } from "next";
 import DefaultLayout from "@/components/DefaultLayout";
+import { pageAlternates, pageSocial } from "@/lib/site";
+
+const description = "What Oskar Čokl is doing, reading and learning right now.";
+
+export const metadata: Metadata = {
+    title: "Now",
+    description,
+    alternates: pageAlternates("/now"),
+    ...pageSocial({ title: "Now", description, path: "/now" }),
+};
 
 export default function Page() {
     return (
         <>
             <DefaultLayout>
+                <h1 className="sr-only">Now</h1>
                 <div className="flex flex-col gap-3">
-                    <div>
-                        <h1 className="text-3xl">What I'm doing</h1>
+                    <section>
+                        <h2 className="text-3xl">What I'm doing</h2>
                         <p>Exploring how to best utilise AI agents for software development.</p>
-                    </div>
-                    <div>
-                        <h1 className="text-3xl">What I'm reading</h1>
-                        <h2 className="text-xl">Technical</h2>
+                    </section>
+                    <section>
+                        <h2 className="text-3xl">What I'm reading</h2>
+                        <h3 className="text-xl">Technical</h3>
                         <ul className="list-disc list-inside">
                             <li>
                                 <a
@@ -25,7 +37,7 @@ export default function Page() {
                                 by John Ousterhout
                             </li>
                         </ul>
-                        <h2 className="text-xl">Pleasure</h2>
+                        <h3 className="text-xl">Pleasure</h3>
                         <ul className="list-disc list-inside">
                             <li>
                                 <a
@@ -39,11 +51,11 @@ export default function Page() {
                                 by Douglas Adams
                             </li>
                         </ul>
-                    </div>
-                    <div>
-                        <h1 className="text-3xl">What I'm learning</h1>
+                    </section>
+                    <section>
+                        <h2 className="text-3xl">What I'm learning</h2>
                         <p>How to set up environments where agents can be most successful.</p>
-                    </div>
+                    </section>
                 </div>
             </DefaultLayout>
         </>
