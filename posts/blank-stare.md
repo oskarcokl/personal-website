@@ -2,6 +2,7 @@
 title: "Blank stare"
 created: "2026-02-03"
 heroImage: "/images/blank-stare-hero.png"
+heroImageAlt: "Painting of a sloth resting on a tree branch among green leaves, staring blankly ahead"
 ---
 
 It's the end of the work day and I can do nothing but blankly stare at the computer monitor in a catatonic state.
