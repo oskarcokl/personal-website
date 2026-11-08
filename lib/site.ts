@@ -1,4 +1,11 @@
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://personal-blog-teal-zeta.vercel.app").replace(/\/$/, "");
+function normalizeSiteUrl(url: string | undefined): string {
+    const value = url?.trim() || "https://personal-blog-teal-zeta.vercel.app";
+    const withScheme = /^https?:\/\//.test(value) ? value : `https://${value}`;
+    return withScheme.replace(/\/+$/, "");
+}
+
+/** Public origin of the site. Set NEXT_PUBLIC_SITE_URL at build time to override. */
+export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 export const SITE_NAME = "Oskar Čokl";
 export const SITE_DESCRIPTION =
     "Oskar Čokl's little corner of the internet: a blog, game development projects and a CV of a fullstack developer from Ljubljana, Slovenia.";
