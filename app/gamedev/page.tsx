@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
 import DefaultLayout from "@/components/DefaultLayout";
 import GameCard from "@/components/GameCard";
 import { getGamesByCategory, GameCategory } from "@/lib/gamedev";
+import { pageAlternates, pageSocial } from "@/lib/site";
+
+const description = "Games, prototypes and game jam entries made by Oskar Čokl.";
+
+export const metadata: Metadata = {
+    title: "Game Development",
+    description,
+    alternates: pageAlternates("/gamedev"),
+    ...pageSocial({ title: "Game Development", description, path: "/gamedev" }),
+};
 
 interface SectionProps {
     title: string;
@@ -15,8 +26,8 @@ function Section({ title, category }: SectionProps) {
     }
 
     return (
-        <section className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+        <section className="mt-8" aria-labelledby={`${category}-heading`}>
+            <h2 id={`${category}-heading`} className="text-2xl font-semibold mb-4">{title}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {games.map((game) => (
                     <GameCard key={game.slug} game={game} />
@@ -39,7 +50,7 @@ export default function GameDevPage() {
             <h1 className="text-center text-4xl">Game Development</h1>
 
             {!hasContent && (
-                <p className="text-center text-neutral-500 mt-8">
+                <p className="text-center text-neutral-600 mt-8">
                     No games yet. Check back soon!
                 </p>
             )}

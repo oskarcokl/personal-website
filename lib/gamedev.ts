@@ -30,6 +30,8 @@ export interface GameEntry {
 }
 
 const CONTENT_DIR = "content/gamedev";
+// Template entry that documents the frontmatter format; never published.
+const EXAMPLE_FILE = "example-game.md";
 
 function getCategoryDir(category: GameCategory): string {
     return path.join(CONTENT_DIR, category);
@@ -45,7 +47,7 @@ export function getGamesByCategory(category: GameCategory): GameEntry[] {
     const files = fs.readdirSync(categoryDir).filter((f) => f.endsWith(".md"));
 
     const entries = files
-        .filter((filename) => filename !== "example-game.md")
+        .filter((filename) => filename !== EXAMPLE_FILE)
         .map((filename) => {
         const slug = filename.replace(".md", "");
         const filePath = path.join(categoryDir, filename);
@@ -75,6 +77,10 @@ export function getAllGames(): GameEntry[] {
 }
 
 export function getGameBySlug(slug: string): GameEntry | null {
+    if (`${slug}.md` === EXAMPLE_FILE || !/^[\w-]+$/.test(slug)) {
+        return null;
+    }
+
     const categories: GameCategory[] = ["games", "prototypes", "game-jams"];
 
     for (const category of categories) {

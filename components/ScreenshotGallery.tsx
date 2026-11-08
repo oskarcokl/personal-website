@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 interface ScreenshotGalleryProps {
@@ -14,36 +14,63 @@ export default function ScreenshotGallery({
 }: ScreenshotGalleryProps) {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const dialogRef = useRef<HTMLDivElement>(null);
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const triggerRef = useRef<HTMLButtonElement | null>(null);
+    const count = screenshots?.length ?? 0;
 
-    if (!screenshots || screenshots.length === 0) {
+    const closeLightbox = useCallback(() => {
+        setLightboxOpen(false);
+        triggerRef.current?.focus();
+    }, []);
+
+    const goToPrevious = useCallback(() => {
+        setCurrentIndex((prev) => (prev === 0 ? count - 1 : prev - 1));
+    }, [count]);
+
+    const goToNext = useCallback(() => {
+        setCurrentIndex((prev) => (prev === count - 1 ? 0 : prev + 1));
+    }, [count]);
+
+    useEffect(() => {
+        if (!lightboxOpen) {
+            return;
+        }
+
+        closeButtonRef.current?.focus();
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowLeft") goToPrevious();
+            if (e.key === "ArrowRight") goToNext();
+
+            // Keep keyboard focus inside the dialog while it is open.
+            if (e.key === "Tab" && dialogRef.current) {
+                const focusable = dialogRef.current.querySelectorAll<HTMLElement>("button");
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [lightboxOpen, closeLightbox, goToPrevious, goToNext]);
+
+    if (count === 0) {
         return null;
     }
 
-    const openLightbox = (index: number) => {
+    const openLightbox = (index: number, trigger: HTMLButtonElement) => {
+        triggerRef.current = trigger;
         setCurrentIndex(index);
         setLightboxOpen(true);
-    };
-
-    const closeLightbox = () => {
-        setLightboxOpen(false);
-    };
-
-    const goToPrevious = () => {
-        setCurrentIndex((prev) =>
-            prev === 0 ? screenshots.length - 1 : prev - 1
-        );
-    };
-
-    const goToNext = () => {
-        setCurrentIndex((prev) =>
-            prev === screenshots.length - 1 ? 0 : prev + 1
-        );
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === "Escape") closeLightbox();
-        if (e.key === "ArrowLeft") goToPrevious();
-        if (e.key === "ArrowRight") goToNext();
     };
 
     return (
@@ -52,13 +79,16 @@ export default function ScreenshotGallery({
                 {screenshots.map((screenshot, index) => (
                     <button
                         key={screenshot}
-                        onClick={() => openLightbox(index)}
+                        type="button"
+                        onClick={(e) => openLightbox(index, e.currentTarget)}
+                        aria-label={`View ${title} screenshot ${index + 1} of ${count}`}
                         className="relative aspect-video bg-neutral-100 rounded overflow-hidden hover:opacity-90 transition-opacity cursor-pointer"
                     >
                         <Image
                             src={screenshot}
-                            alt={`${title} screenshot ${index + 1}`}
+                            alt=""
                             fill
+                            sizes="(min-width: 768px) 33vw, 50vw"
                             className="object-cover"
                         />
                     </button>
@@ -67,14 +97,16 @@ export default function ScreenshotGallery({
 
             {lightboxOpen && (
                 <div
+                    ref={dialogRef}
                     className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
                     onClick={closeLightbox}
-                    onKeyDown={handleKeyDown}
-                    tabIndex={0}
                     role="dialog"
                     aria-modal="true"
+                    aria-label={`${title} screenshots`}
                 >
                     <button
+                        ref={closeButtonRef}
+                        type="button"
                         onClick={(e) => {
                             e.stopPropagation();
                             closeLightbox();
@@ -88,6 +120,7 @@ export default function ScreenshotGallery({
                     {screenshots.length > 1 && (
                         <>
                             <button
+                                type="button"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     goToPrevious();
@@ -98,6 +131,7 @@ export default function ScreenshotGallery({
                                 &#8249;
                             </button>
                             <button
+                                type="button"
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     goToNext();
@@ -116,15 +150,15 @@ export default function ScreenshotGallery({
                     >
                         <Image
                             src={screenshots[currentIndex]}
-                            alt={`${title} screenshot ${currentIndex + 1}`}
+                            alt={`${title} screenshot ${currentIndex + 1} of ${count}`}
                             width={1920}
                             height={1080}
                             className="max-w-full max-h-[90vh] object-contain"
                         />
                     </div>
 
-                    <div className="absolute bottom-4 text-white text-sm">
-                        {currentIndex + 1} / {screenshots.length}
+                    <div className="absolute bottom-4 text-white text-sm" aria-live="polite">
+                        {currentIndex + 1} / {count}
                     </div>
                 </div>
             )}

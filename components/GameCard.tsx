@@ -18,8 +18,9 @@ export default function GameCard({ game }: GameCardProps) {
                 <div className="relative aspect-video bg-neutral-100">
                     <Image
                         src={metadata.thumbnail}
-                        alt={metadata.title}
+                        alt=""
                         fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                         className="object-cover"
                     />
                 </div>
@@ -32,16 +33,16 @@ export default function GameCard({ game }: GameCardProps) {
                     {metadata.description}
                 </p>
                 {metadata.tags && metadata.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-2">
+                    <ul aria-label="Tags" className="flex flex-wrap gap-1 mt-2">
                         {metadata.tags.map((tag) => (
-                            <span
+                            <li
                                 key={tag}
-                                className="text-xs px-2 py-0.5 bg-neutral-100 text-neutral-600 rounded"
+                                className="text-xs px-2 py-0.5 bg-neutral-100 text-neutral-700 rounded"
                             >
                                 {tag}
-                            </span>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 )}
             </div>
         </Link>
