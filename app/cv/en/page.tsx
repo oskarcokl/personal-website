@@ -7,13 +7,13 @@ import '../print.css';
 export const metadata: Metadata = {
   title: 'CV',
   description: cvData.summary.text,
-  alternates: pageAlternates('/CV/en', { en: '/CV/en', sl: '/CV/sl', 'x-default': '/CV/en' }),
+  alternates: pageAlternates('/cv/en', { en: '/cv/en', sl: '/cv/sl', 'x-default': '/cv/en' }),
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: 'profile',
     title: 'CV | Oskar Čokl',
     description: cvData.summary.text,
-    url: '/CV/en',
+    url: '/cv/en',
     locale: 'en_US',
     firstName: 'Oskar',
     lastName: 'Čokl',

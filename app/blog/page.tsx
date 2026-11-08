@@ -4,7 +4,7 @@ import Link from "next/link";
 import { formatDate, getAllPosts } from "@/lib/posts";
 import { pageAlternates, pageSocial } from "@/lib/site";
 
-const description = "Posts by Oskar Čokl about programming, AI, game development and whatever else is on my mind.";
+const description = "Posts by Oskar Čokl about programming, AI and whatever else is on my mind.";
 
 export const metadata: Metadata = {
     title: "Blog",

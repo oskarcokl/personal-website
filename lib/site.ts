@@ -8,7 +8,7 @@ function normalizeSiteUrl(url: string | undefined): string {
 export const SITE_URL = normalizeSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 export const SITE_NAME = "Oskar Čokl";
 export const SITE_DESCRIPTION =
-    "Oskar Čokl's little corner of the internet: a blog, game development projects and a CV of a fullstack developer from Ljubljana, Slovenia.";
+    "Oskar Čokl's little corner of the internet: a blog and the CV of a fullstack developer from Ljubljana, Slovenia.";
 export const AUTHOR = {
     name: "Oskar Čokl",
     email: "oskar.cokl@gmail.com",

@@ -11,7 +11,7 @@ export default function CVLanguageLink({ lang, children }: { lang: CVLang; child
   };
 
   return (
-    <Link href={`/CV/${lang}`} hrefLang={lang} lang={lang} onClick={rememberLanguage}>
+    <Link href={`/cv/${lang}`} hrefLang={lang} lang={lang} onClick={rememberLanguage}>
       {children}
     </Link>
   );

@@ -7,13 +7,13 @@ import '../print.css';
 export const metadata: Metadata = {
   title: 'Življenjepis',
   description: cvData.summary.text,
-  alternates: pageAlternates('/CV/sl', { en: '/CV/en', sl: '/CV/sl', 'x-default': '/CV/en' }),
+  alternates: pageAlternates('/cv/sl', { en: '/cv/en', sl: '/cv/sl', 'x-default': '/cv/en' }),
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: 'profile',
     title: 'Življenjepis | Oskar Čokl',
     description: cvData.summary.text,
-    url: '/CV/sl',
+    url: '/cv/sl',
     locale: 'sl_SI',
     firstName: 'Oskar',
     lastName: 'Čokl',

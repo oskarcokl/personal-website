@@ -32,7 +32,7 @@ export default function CVPage({ lang, cvData }: { lang: CVLang; cvData: CVData 
         data={{
           '@context': 'https://schema.org',
           '@type': 'ProfilePage',
-          url: absoluteUrl(`/CV/${lang}`),
+          url: absoluteUrl(`/cv/${lang}`),
           inLanguage: lang,
           mainEntity: {
             '@type': 'Person',
