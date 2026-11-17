@@ -81,7 +81,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                     <h1 className="text-center text-4xl">{post.title}</h1>
                     {post.created && (
                         <p className="text-center text-sm italic text-gray-600 mt-1">
-                            Created <time dateTime={post.created}>{formatDate(post.created)}</time>
+                            Posted <time dateTime={post.created}>{formatDate(post.created)}</time>
                         </p>
                     )}
                 </header>
