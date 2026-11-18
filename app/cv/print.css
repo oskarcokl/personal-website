@@ -1,6 +1,8 @@
 @media print {
+    /* A zero page margin leaves the browser no room for its date, title, URL and
+       page-number header/footer; the 1cm margin moves onto the body instead. */
     @page {
-        margin: 1cm;
+        margin: 0;
         size: A4 portrait;
     }
 
@@ -14,6 +16,10 @@
     }
 
     body {
+        padding: 1cm;
+        /* Repeat the padding on every printed page, not just the first and last. */
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
     }

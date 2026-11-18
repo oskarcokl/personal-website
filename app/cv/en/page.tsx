@@ -1,18 +1,20 @@
 import type { Metadata } from 'next';
 import CVPage from '@/components/CVPage';
 import { OPEN_GRAPH_DEFAULTS, pageAlternates } from '@/lib/site';
-import { data as cvData } from '@/public/locales/CV/en';
+import { getCV } from '@/lib/cv';
 import '../print.css';
+
+const { description } = getCV('en');
 
 export const metadata: Metadata = {
   title: 'CV',
-  description: cvData.summary.text,
+  description,
   alternates: pageAlternates('/cv/en', { en: '/cv/en', sl: '/cv/sl', 'x-default': '/cv/en' }),
   openGraph: {
     ...OPEN_GRAPH_DEFAULTS,
     type: 'profile',
     title: 'CV | Oskar Čokl',
-    description: cvData.summary.text,
+    description,
     url: '/cv/en',
     locale: 'en_US',
     firstName: 'Oskar',
@@ -21,10 +23,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'CV | Oskar Čokl',
-    description: cvData.summary.text,
+    description,
   },
 };
 
 export default function CVEN() {
-  return <CVPage lang="en" cvData={cvData} />;
+  return <CVPage lang="en" />;
 }

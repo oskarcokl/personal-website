@@ -1,0 +1,50 @@
+/* Styles for the markdown-rendered CV body (cv/<lang>.md). */
+
+.content {
+    margin-top: 0.25rem;
+}
+
+.content h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: var(--color-sky-700, #0369a1);
+}
+
+.content h2:not(:first-child) {
+    margin-top: 2.25rem;
+}
+
+.content h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.content ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-top: 0.25rem;
+}
+
+/* Skill tables render as two plain columns; the header row stays for screen readers only. */
+.content table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.content th,
+.content td {
+    padding: 0;
+    text-align: left;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+.content thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
