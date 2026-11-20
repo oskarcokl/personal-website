@@ -6,6 +6,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import { AUTHOR, OPEN_GRAPH_DEFAULTS, SITE_DESCRIPTION, SITE_NAME, SITE_URL, pageAlternates } from "@/lib/site";
+import { Analytics } from '@vercel/analytics/next';
 
 config.autoAddCss = false;
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         contact: <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>
                     </p>
                 </footer>
+                <Analytics />
             </body>
         </html>
     );
