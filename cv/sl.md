@@ -35,7 +35,7 @@ kako rešiti njihove težave, in izdelati programsko opremo, ki jih navduši.
 
 ## Projekti
 
-- [Programska oprema z vgrajenim agentom](https://www.oskarcokl.com/blog/agent-embedded-software) – netehničnim uporabnikom omogoča, da preprosto prispevajo svoje predloge tako, da aplikacijo spreminjajo prek klepetalnega vmesnika.
+- [Agent Embeded Software](https://github.com/oskarcokl/recursive-todo-app) – netehničnim uporabnikom omogoča, da preprosto prispevajo svoje predloge tako, da aplikacijo spreminjajo prek klepetalnega vmesnika.
 
 ## Izobrazba
 

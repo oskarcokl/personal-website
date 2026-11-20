@@ -35,7 +35,7 @@ Oct 2021 – Present
 
 ## Projects
 
-- [Agent embedded software](https://www.oskarcokl.com/blog/agent-embedded-software) - lets non-technical users easily contribute their suggestions by changing the app through a chat interface.
+- [Agent Embedded Software](https://github.com/oskarcokl/recursive-todo-app) - lets non-technical users easily contribute their suggestions by changing the app through a chat interface.
 
 ## Education
 
