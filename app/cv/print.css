@@ -6,6 +6,11 @@
         size: A4 portrait;
     }
 
+    /* Set the root font size to 10pt so all rem-based text, headings, and spacing scale from it. */
+    html {
+        font-size: 10pt;
+    }
+
     html,
     body {
         margin: 0;
