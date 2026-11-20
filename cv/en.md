@@ -8,38 +8,39 @@ knowsLanguage: [Slovenian, English, German]
 
 ## Summary
 
-Endlesly curious software engineer with a passion for making software users love. 
-There is nothing I enjoy more than listening to users, figuring out how to slove 
-their problems and deliver software that delights them.
+Endlessly curious software engineer with a passion for making software users love.
+There is nothing I enjoy more than listening to users, figuring out how to solve
+their problems, and delivering software that delights them.
 
 
-## Work experience
+## Work Experience
 
 ### **Software Engineer**, iPROM d.o.o.
 
-1\. 10. 2021 - current
+Oct 2021 – Present
 
-- Championed use of LLMs in day to day work, organized presentations, helped onboard coworkers to enchance their workflows with AI agents.
-- Lead the development of ad creative upload tool which sped up ad campaign setup.
-- Took ownership off and revived internal debugging tool which enabled non-technical teams to identify and resolve publisher-side ad-serving issues.
-- Developed ad layout engine which let's us specify ad placements without having to rely on publishers developers.
-- Lead develpoment of Ads.txt management tool, increasing Yield team efficiency.
+- Championed the use of LLMs in day-to-day work, organized presentations, and helped onboard coworkers to enhance their workflows with AI agents.
+- Led the development of an ad creative upload tool that sped up ad campaign setup.
+- Took ownership of and revived an internal debugging tool that enabled non-technical teams to identify and resolve publisher-side ad-serving issues.
+- Developed an ad layout engine that lets us specify ad placements without having to rely on publishers' developers.
+- Led the development of an Ads.txt management tool, increasing Yield team efficiency.
 
 ## Skills
 
-- Proficient in driving agents to get desired outcomes,
-- clear comunication
-- problem solving
-- able to understand users wants and pain points.
+- Proficient in driving agents to get desired outcomes
+- Clear communication
+- Problem solving
+- Able to understand users' wants and pain points
 
 ## Projects
--  [Agent embeded software](https://www.oskarcokl.com/blog/agent-embeded-software) - let's non technical users easily contribute their suggestions by changing the app through a chat interface.
+
+- [Agent-embedded software](https://www.oskarcokl.com/blog/agent-embeded-software) - lets non-technical users easily contribute their suggestions by changing the app through a chat interface.
 
 ## Education
 
 **B.Sc. in Computer Science and Informatics**, Faculty of Computer and Information Science, University of Ljubljana
 
-Ljubljana, Slovenia 9. 2017-10. 2021
+Ljubljana, Slovenia, Sep 2017 – Oct 2021
 
 ## Language Skills
 
