@@ -27,10 +27,11 @@ Oct 2021 – Present
 
 ## Skills
 
-- Proficient in driving agents to get desired outcomes
-- Clear communication
-- Problem solving
-- Able to understand users' wants and pain points
+- **AI-Assisted Development:** Driving coding agents to ship software (Claude Code, Codex, Antigravity via T3 Code)
+- **Languages & Web:** TypeScript, JavaScript, Go, React, Node.js, HTML, CSS
+- **Data & Analytics:** SQL querying and analysis (MySQL, PostgreSQL, ClickHouse)
+- **Infrastructure & CI/CD:** Docker, Linux, GitLab CI
+- **Product & Collaboration:** Understanding users' needs and pain points, clear communication, problem solving
 
 ## Projects
 
