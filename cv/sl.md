@@ -17,29 +17,31 @@ kako rešiti njihove težave, in izdelati programsko opremo, ki jih navduši.
 
 ### **Programski inženir**, iPROM d.o.o.
 
-1\. 10. 2021 - trenutno
+1\. 10. 2021 – danes
 
-- Spodbujal uporabo LLM-jev pri vsakodnevnem delu, organiziral predstavitve in sodelavcem pomagal izboljšati delovne procese z AI agenti.
+- Spodbujal uporabo LLM-ov pri vsakodnevnem delu, organiziral predstavitve in sodelavcem pomagal izboljšati delovne procese z AI-agenti.
 - Vodil razvoj orodja za nalaganje oglasnih kreativ, ki je pospešilo postavitev oglasnih kampanj.
 - Prevzel odgovornost za interno orodje za analizo napak in ga oživil, kar je netehničnim ekipam omogočilo prepoznavanje in reševanje težav pri prikazovanju oglasov na strani medijev.
 - Razvil pogon za postavitev oglasnih mest, s katerim lahko določamo oglasna mesta, ne da bi bili odvisni od razvijalcev medijev.
-- Vodil razvoj orodja za upravljanje Ads.txt, kar je povečalo učinkovitost Yield ekipe.
+- Vodil razvoj orodja za upravljanje datotek Ads.txt, kar je povečalo učinkovitost ekipe Yield.
 
 ## Veščine
 
-- Spretno vodenje AI agentov do želenih rezultatov
-- jasna komunikacija
-- reševanje problemov
-- razumevanje želja in težav uporabnikov
+- **Razvoj s pomočjo AI:** vodenje AI-agentov pri razvoju programske opreme (Claude Code, Codex, Antigravity prek T3 Code)
+- **Jeziki in spletne tehnologije:** TypeScript, JavaScript, Go, React, Node.js, HTML, CSS
+- **Podatki in analitika:** poizvedbe SQL in analitika (MySQL, PostgreSQL, ClickHouse)
+- **Infrastruktura in CI/CD:** Docker, Linux, GitLab CI
+- **Produkt in sodelovanje:** razumevanje potreb in težav uporabnikov, jasna komunikacija, reševanje problemov
 
 ## Projekti
--  [Programska oprema z vgrajenim agentom](https://www.oskarcokl.com/blog/agent-embeded-software) - netehničnim uporabnikom omogoča, da preprosto prispevajo svoje predloge tako, da aplikacijo spreminjajo prek klepetalnega vmesnika.
+
+- [Programska oprema z vgrajenim agentom](https://www.oskarcokl.com/blog/agent-embedded-software) – netehničnim uporabnikom omogoča, da preprosto prispevajo svoje predloge tako, da aplikacijo spreminjajo prek klepetalnega vmesnika.
 
 ## Izobrazba
 
 **Diplomirani inženir računalništva in informatike UNI program**, Fakulteta za računalništvo in informatiko, Univerza v Ljubljani
 
-Ljubljana, Slovenija 9. 2017-10. 2021
+Ljubljana, Slovenija, 9. 2017 – 10. 2021
 
 ## Jeziki
 
