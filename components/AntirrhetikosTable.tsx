@@ -67,10 +67,13 @@ function playChime(audioContext: AudioContext | null) {
 export default function AntirrhetikosTable({ entries }: { entries: AntirrhetikosEntry[] }) {
     const [activeMode, setActiveMode] = useState("All");
     const [query, setQuery] = useState("");
+    const [filterOpen, setFilterOpen] = useState(false);
     const [selectedEntry, setSelectedEntry] = useState<AntirrhetikosEntry | null>(null);
     const [timer, setTimer] = useState<TimerState | null>(null);
 
     const searchRef = useRef<HTMLInputElement>(null);
+    const filterMenuRef = useRef<HTMLDivElement>(null);
+    const filterButtonRef = useRef<HTMLButtonElement>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
     const audioContextRef = useRef<AudioContext | null>(null);
     const baseTitleRef = useRef<string | null>(null);
@@ -219,6 +222,35 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
     }, [selectedEntry]);
 
     useEffect(() => {
+        if (!filterOpen) return;
+
+        const onPointerDown = (event: MouseEvent) => {
+            if (filterMenuRef.current && !filterMenuRef.current.contains(event.target as Node)) {
+                setFilterOpen(false);
+            }
+        };
+
+        const onKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setFilterOpen(false);
+                if (
+                    filterMenuRef.current?.contains(document.activeElement) &&
+                    document.activeElement !== searchRef.current
+                ) {
+                    filterButtonRef.current?.focus();
+                }
+            }
+        };
+
+        document.addEventListener("mousedown", onPointerDown);
+        document.addEventListener("keydown", onKeyDown);
+        return () => {
+            document.removeEventListener("mousedown", onPointerDown);
+            document.removeEventListener("keydown", onKeyDown);
+        };
+    }, [filterOpen]);
+
+    useEffect(() => {
         const onKeyDown = (event: KeyboardEvent) => {
             if (
                 event.key === "/" &&
@@ -231,6 +263,7 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                 !dialogRef.current?.open
             ) {
                 event.preventDefault();
+                setFilterOpen(false);
                 searchRef.current?.focus();
             }
         };
@@ -288,45 +321,149 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                 </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-3">
-                <input
-                    ref={searchRef}
-                    type="search"
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    onKeyDown={(event) => {
-                        if (event.key === "Escape") {
-                            if (query) {
-                                setQuery("");
-                            } else {
-                                searchRef.current?.blur();
-                            }
-                        }
-                    }}
-                    placeholder="Filter hooks... (press /)"
-                    aria-label="Filter hooks"
-                    autoComplete="off"
-                    className="flex-1 min-w-[220px] rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-base text-black placeholder:text-gray-500 focus:border-sky-700 focus:outline-none"
-                />
-                <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by mode">
-                    {modes.map((mode) => {
-                        const isActive = mode === activeMode;
-                        return (
-                            <button
-                                key={mode}
-                                type="button"
-                                onClick={() => setActiveMode(mode)}
-                                aria-pressed={isActive}
-                                className={
-                                    isActive
-                                        ? "border border-sky-700 bg-sky-700 text-white px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-800"
-                                        : "border border-sky-700 text-sky-700 px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-50"
+            <div className="mx-auto w-full max-w-lg">
+                <div
+                    ref={filterMenuRef}
+                    className="relative flex items-center rounded-md border border-neutral-300 bg-white focus-within:border-sky-700"
+                >
+                    <input
+                        ref={searchRef}
+                        type="search"
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        onKeyDown={(event) => {
+                            if (event.key === "Escape") {
+                                if (filterOpen) {
+                                    setFilterOpen(false);
+                                } else if (query) {
+                                    setQuery("");
+                                } else {
+                                    searchRef.current?.blur();
                                 }
+                            }
+                        }}
+                        placeholder="Filter hooks... (press /)"
+                        aria-label="Filter hooks"
+                        autoComplete="off"
+                        className="min-w-0 flex-1 bg-transparent py-1.5 pl-3 pr-2 text-base text-black placeholder:text-gray-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                    />
+                    {query && (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setQuery("");
+                                searchRef.current?.focus();
+                            }}
+                            aria-label="Clear search"
+                            title="Clear search"
+                            className="mr-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded text-gray-400 cursor-pointer hover:bg-neutral-100 hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-700"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                aria-hidden="true"
+                                className="h-3.5 w-3.5"
                             >
-                                {mode}
-                            </button>
-                        );
-                    })}
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    )}
+                    <button
+                        ref={filterButtonRef}
+                        type="button"
+                        onClick={() => setFilterOpen((open) => !open)}
+                        aria-haspopup="menu"
+                        aria-expanded={filterOpen}
+                        aria-controls="mode-filter-menu"
+                        aria-label={
+                            activeMode === "All"
+                                ? "Filter by pattern"
+                                : `Filter by pattern (active: ${activeMode})`
+                        }
+                        title={
+                            activeMode === "All"
+                                ? "Filter by pattern"
+                                : `Filtered by: ${activeMode}`
+                        }
+                        className={
+                            activeMode !== "All" || filterOpen
+                                ? "relative mr-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded bg-sky-50 text-sky-700 cursor-pointer hover:bg-sky-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-700"
+                                : "relative mr-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded text-gray-500 cursor-pointer hover:bg-neutral-100 hover:text-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-700"
+                        }
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={1.75}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                            className="h-4 w-4"
+                        >
+                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                        </svg>
+                        {activeMode !== "All" && (
+                            <span
+                                aria-hidden="true"
+                                className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-sky-700"
+                            />
+                        )}
+                    </button>
+
+                    {filterOpen && (
+                        <div
+                            id="mode-filter-menu"
+                            role="menu"
+                            aria-label="Filter by pattern"
+                            className="absolute right-0 top-full z-20 mt-1.5 min-w-48 rounded-md border border-neutral-300 bg-white py-1 shadow-md"
+                        >
+                            {modes.map((mode) => {
+                                const isActive = mode === activeMode;
+                                return (
+                                    <button
+                                        key={mode}
+                                        type="button"
+                                        role="menuitemradio"
+                                        aria-checked={isActive}
+                                        onClick={() => {
+                                            setActiveMode(mode);
+                                            setFilterOpen(false);
+                                        }}
+                                        className={
+                                            isActive
+                                                ? "flex w-full items-center justify-between gap-3 whitespace-nowrap bg-sky-50 px-3 py-1.5 text-left text-base font-bold text-sky-700 cursor-pointer"
+                                                : "flex w-full items-center justify-between gap-3 whitespace-nowrap px-3 py-1.5 text-left text-base text-black cursor-pointer hover:bg-sky-50/70 hover:text-sky-700"
+                                        }
+                                    >
+                                        <span>{mode}</span>
+                                        {isActive && (
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth={2.25}
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                aria-hidden="true"
+                                                className="h-4 w-4 shrink-0"
+                                            >
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        )}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -408,29 +545,60 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                     }
                 }}
                 aria-labelledby="strike-modal-title"
-                className="m-auto w-[calc(100%-2rem)] max-w-xl rounded-md border border-neutral-300 bg-stone-50 p-6 sm:p-8 text-base text-black backdrop:bg-black/50"
+                className="m-auto w-[calc(100%-2rem)] max-w-xl rounded-lg border border-stone-200 bg-stone-50 px-6 py-7 sm:px-10 sm:py-9 text-base text-black shadow-xl backdrop:bg-black/45"
             >
                 {selectedEntry && (
                     <div>
-                        <p id="strike-modal-title" className="text-sky-700 font-bold mb-2">
-                            {selectedEntry.mode}
-                            {selectedEntry.sub ? ` · ${selectedEntry.sub}` : ""}
-                        </p>
-                        <p className="italic text-gray-600 mb-5">
+                        <div className="mb-6 flex items-center justify-between gap-4">
+                            <p id="strike-modal-title" className="font-sans text-xs text-stone-500">
+                                {selectedEntry.mode}
+                                {selectedEntry.sub ? ` · ${selectedEntry.sub}` : ""}
+                            </p>
+                            <button
+                                type="button"
+                                onClick={() => dialogRef.current?.close()}
+                                aria-label="Close"
+                                className="-mr-1.5 flex h-7 w-7 shrink-0 items-center justify-center rounded text-stone-400 cursor-pointer hover:bg-stone-200/70 hover:text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-700"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={1.75}
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    aria-hidden="true"
+                                    className="h-4 w-4"
+                                >
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <p className="mb-5 text-base italic leading-relaxed text-stone-500">
                             &ldquo;{selectedEntry.hook}&rdquo;
                         </p>
-                        <p className="text-2xl font-bold leading-snug text-black mb-6">
+
+                        <p className="mb-8 text-2xl sm:text-[1.8rem] font-bold leading-snug text-black">
                             {selectedEntry.stop}
                         </p>
-                        <div className="border-l-2 border-sky-700 pl-4 mb-7">
-                            <span className="block font-bold text-sky-700 mb-1">
-                                10-Second Physical Interrupt
+
+                        <div className="rounded-lg bg-stone-200/45 px-5 py-5">
+                            <span className="mb-2 block font-sans text-[11px] font-semibold uppercase tracking-wider text-sky-700">
+                                10-Second Interrupt
                             </span>
-                            <p className="text-black">{selectedEntry.move}</p>
+                            <p className="text-base leading-relaxed text-stone-900">
+                                {selectedEntry.move}
+                            </p>
 
                             {selectedEntry.timerSeconds !== null && (
-                                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-neutral-200">
-                                    <span className="font-mono text-xl font-bold tabular-nums text-black" aria-live="off">
+                                <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-stone-200/90 pt-3.5">
+                                    <span
+                                        className="font-mono text-lg font-bold tabular-nums text-stone-900"
+                                        aria-live="off"
+                                    >
                                         {selectedTimer
                                             ? selectedTimer.status === "done"
                                                 ? "0:00 — Time's up!"
@@ -442,7 +610,7 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                                             <button
                                                 type="button"
                                                 onClick={() => startTimerForEntry(selectedEntry)}
-                                                className="border border-sky-700 bg-sky-700 text-white px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-800"
+                                                className="rounded-md border border-stone-300 bg-white px-3.5 py-1 text-sm text-sky-700 cursor-pointer hover:border-sky-700/50 hover:bg-sky-50/50"
                                             >
                                                 {selectedTimer?.status === "done" ? "Restart timer" : "Start timer"}
                                             </button>
@@ -451,14 +619,14 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                                                 <button
                                                     type="button"
                                                     onClick={pauseTimer}
-                                                    className="border border-sky-700 text-sky-700 px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-50"
+                                                    className="rounded-md border border-stone-300 bg-white px-3.5 py-1 text-sm text-sky-700 cursor-pointer hover:border-sky-700/50 hover:bg-sky-50/50"
                                                 >
                                                     Pause
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={clearTimer}
-                                                    className="border border-sky-700 text-sky-700 px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-50"
+                                                    className="rounded-md border border-stone-300 bg-white px-3.5 py-1 text-sm text-stone-600 cursor-pointer hover:border-stone-400 hover:text-black"
                                                 >
                                                     Reset
                                                 </button>
@@ -468,14 +636,14 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                                                 <button
                                                     type="button"
                                                     onClick={resumeTimer}
-                                                    className="border border-sky-700 bg-sky-700 text-white px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-800"
+                                                    className="rounded-md border border-stone-300 bg-white px-3.5 py-1 text-sm text-sky-700 cursor-pointer hover:border-sky-700/50 hover:bg-sky-50/50"
                                                 >
                                                     Resume
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={clearTimer}
-                                                    className="border border-sky-700 text-sky-700 px-3 py-1 rounded-md text-base cursor-pointer hover:bg-sky-50"
+                                                    className="rounded-md border border-stone-300 bg-white px-3.5 py-1 text-sm text-stone-600 cursor-pointer hover:border-stone-400 hover:text-black"
                                                 >
                                                     Reset
                                                 </button>
@@ -485,12 +653,14 @@ export default function AntirrhetikosTable({ entries }: { entries: Antirrhetikos
                                 </div>
                             )}
                         </div>
+
                         <button
                             type="button"
                             onClick={() => dialogRef.current?.close()}
-                            className="w-full border border-sky-700 bg-sky-700 text-white px-4 py-2 rounded-md text-base cursor-pointer hover:bg-sky-800"
+                            className="mt-6 w-full rounded-md border border-sky-700 bg-sky-700 px-4 py-2.5 text-base text-white cursor-pointer hover:bg-sky-800"
                         >
-                            Executing — Return to Work (Esc)
+                            Executing — Return to Work{" "}
+                            <span className="ml-1 text-sm text-white/75">(Esc)</span>
                         </button>
                     </div>
                 )}
